@@ -7,7 +7,9 @@ module.exports = function (directory, extension, callback) {
     if (err) return callback(err);
 
     data = data.filter(function (file) {
-      return file.endsWith(extension);
+      if (file.length > fileType.length) {
+      return file.endsWith(fileType);
+    } // was also returning file "md" and file ""
     });
 
     callback(null, data);
